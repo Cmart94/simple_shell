@@ -28,6 +28,11 @@ char *conc_check_list(list_t **head, char *aux1);
 void free_list(list_t *head);
 int _strcmp(char *str1, char *str2);
 char *get_path(void);
+char *builtin_compare(char *str);
+int builtin_execution(char *builtmatch, char *argv[]);
+int env_function();
+int change_path(char *argv[]);
+int _exit();
 
 extern char **environ;
 
