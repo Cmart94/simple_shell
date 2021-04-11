@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 
 /**
  * struct list_s - Short description
@@ -23,7 +24,7 @@ typedef struct list_s
 } list_t;
 
 list_t *add_node_end(list_t **head, const char *str);
-char **buff_separator(char *str);
+char **buff_separator(char *str, char *identificator);
 char *conc_check_list(list_t **head, char *aux1);
 void free_list(list_t *head);
 int _strcmp(char *str1, char *str2);
@@ -32,7 +33,11 @@ char *builtin_compare(char *str);
 int builtin_execution(char *builtmatch, char *argv[]);
 int env_function();
 int change_path(char *argv[]);
-int _exit();
+int isatty(int fd);
+/*int _exit();*/
+int count_commands(char *str_read);
+void function_execution(char array_master[]);
+int check_path(char *array);
 
 extern char **environ;
 
