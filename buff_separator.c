@@ -10,7 +10,7 @@
 char **buff_separator(char *str, char *identificator)
 {
 	char **array_words = NULL, *token = NULL, *ptr = NULL;
-	unsigned int i, j;
+	unsigned int i;
 
 	for (i = 0; str[i] != '\0'; i++)
 		;

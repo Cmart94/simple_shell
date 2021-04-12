@@ -7,7 +7,6 @@
 void fork_execution(char **array_words)
 {
 	int status;
-	unsigned int i;
 	pid_t fork_pid;
 	struct stat st;
 	

@@ -7,10 +7,6 @@
 void function_execution(char array_master[])
 {
 	char **array_words = NULL, *identificator, *built_compare;
-	int status;
-	unsigned int i;
-	pid_t fork_pid;
-	struct stat st;
 
 	identificator = " ";
 	array_words = buff_separator(array_master, identificator);

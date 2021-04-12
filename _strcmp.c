@@ -11,6 +11,7 @@ int _strcmp(char *str1, char *str2)
 	unsigned int i, j = 0, k;
 
 	for (k = 0; str2[k] != '\0'; k++)
+		;
 
 		for (i = 0; i < k; i++)
 		{

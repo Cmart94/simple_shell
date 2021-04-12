@@ -8,12 +8,47 @@
 
 int main(void)
 {
-	ssize_t characters_read;
-	char buff_read[1024], **array_read = NULL, *identificator;
-	unsigned int count_read = 0;
+	ssize_t characters_read, characters;
+	char buff_read[1024], **array_read = NULL, *identificator = NULL, **array_words = NULL;
+	char *buffer = NULL;
+	/*list_t *header = NULL;*/
+	size_t buffsize = 1024;
+	unsigned int count_read = 0, i;
 
+	signal(SIGINT, sigintHandler);
 	if (isatty(STDIN_FILENO) == 1) /*Interactive mode*/
 	{
+		buffer = malloc(buffsize * sizeof(char));
+		if (buffer == NULL)
+		{
+			perror("ERROR: unable to alocate buffer");
+			exit(EXIT_FAILURE);
+		}
+		while (characters != EOF)
+		{
+			write(STDOUT_FILENO, "#cisfun$ ", 9);
+			characters = getline(&buffer, &buffsize, stdin); /*Liberar en caso de que falle*/
+			printf("%lu characters antes de corregir, buffer[%s]\n", characters, buffer);
+			buffer[characters - 1] = '\0';
+			printf("%lu characters leídos, buffer[%s]\n", characters, buffer);
+			if (check_buffer(buffer) == 0)
+			{
+				printf("Path incorrect\n");
+			}
+			else
+			{
+				printf("Path valido\n");
+				identificator = " ";
+				array_words = buff_separator(buffer, identificator);
+				for (i = 0; array_words[i] != '\0'; i++)
+				{
+					printf("array_words [%i]: %s\n", i, array_words[i]);
+				}
+			}
+			free(array_words);
+		}
+		free(buffer);
+		exit(EXIT_SUCCESS);
 	}
 	else /*No interactive mode*/
 	{
