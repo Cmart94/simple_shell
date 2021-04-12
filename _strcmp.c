@@ -6,26 +6,15 @@
  * @str2: string to be compare with str1
  * Return: if equals return 0, -1 if don't
  */
-int _strcmp(char *str1, char *str2)
+int _strcmp(char *s1, char *s2)
 {
-	unsigned int i, j = 0, k;
-
-	for (k = 0; str2[k] != '\0'; k++)
-		;
-
-		for (i = 0; i < k; i++)
-		{
-			if (str1[i] != str2[i])
-			{
-				j++;
-			}
-		}
-	if (j != 0)
+	while ((*s1 != '\0' && *s2 != '\0') && *s1 == *s2)
 	{
-		return (-1);
+		s1++;
+		s2++;
 	}
-	else
-	{
+	if (*s1 == *s2)
 		return (0);
-	}
+	else
+		return (*s1 - *s2);
 }

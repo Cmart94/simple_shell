@@ -34,11 +34,13 @@ int main(void)
 			if (check_buffer(buffer) == 0)
 			{
 				printf("Path valido\n");
+				identificator = " ";
+				array_words = buff_separator(buffer, identificator);
 				for (i = 0; array_words[i] != '\0'; i++)
 				{
 					printf("array_words [%i]: %s\n", i, array_words[i]);
 				}
-				function_execution(array_words[0]);
+				function_execution(array_words);
 				free(array_words);
 			}
 		}

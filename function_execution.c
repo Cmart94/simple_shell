@@ -10,18 +10,18 @@ void function_execution(char array_master[])
 
 	identificator = " ";
 	array_words = buff_separator(array_master, identificator);
+	built_compare = builtin_compare(array_words[0]);
 	if (check_path(array_words[0]) == 0)
 	{
 		fork_execution(array_words);
 	}
-	built_compare = builtin_compare(array_words[0]);
-	if (built_compare != NULL)
+	else if (built_compare != NULL)
 	{
 		printf("built_compare: %s\n", built_compare);
 		builtin_execution(built_compare, array_words);
 	}
 	else
 	{
-		printf("Vamos a concatenar PATH");
+		printf("Vamos a concatenar PATH\n");
 	}
 }
