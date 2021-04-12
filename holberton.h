@@ -29,15 +29,16 @@ char *conc_check_list(list_t **head, char *aux1);
 void free_list(list_t *head);
 int _strcmp(char *str1, char *str2);
 char *get_path(void);
-char *builtin_compare(char *str);
-int builtin_execution(char *builtmatch, char *argv[]);
 int env_function();
-int change_path(char *argv[]);
+/*int change_path(char *argv[]);*/
 int isatty(int fd);
 /*int _exit();*/
 int count_commands(char *str_read);
 void function_execution(char array_master[]);
 int check_path(char *array);
+void fork_execution(char **array_words);
+char *builtin_compare(char *str);
+void builtin_execution(char *builtmatch, char *argv[]);
 
 extern char **environ;
 
