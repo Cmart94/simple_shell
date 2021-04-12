@@ -33,19 +33,14 @@ int main(void)
 			printf("%lu characters leídos, buffer[%s]\n", characters, buffer);
 			if (check_buffer(buffer) == 0)
 			{
-				printf("Path incorrect\n");
-			}
-			else
-			{
 				printf("Path valido\n");
-				identificator = " ";
-				array_words = buff_separator(buffer, identificator);
 				for (i = 0; array_words[i] != '\0'; i++)
 				{
 					printf("array_words [%i]: %s\n", i, array_words[i]);
 				}
+				function_execution(array_words[0]);
+				free(array_words);
 			}
-			free(array_words);
 		}
 		free(buffer);
 		exit(EXIT_SUCCESS);

@@ -20,4 +20,8 @@ void function_execution(char array_master[])
 		printf("built_compare: %s\n", built_compare);
 		builtin_execution(built_compare, array_words);
 	}
+	else
+	{
+		printf("Vamos a concatenar PATH");
+	}
 }
