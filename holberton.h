@@ -28,7 +28,7 @@ list_t *add_node_end(list_t **head, const char *str);
 char **buff_separator(char *str, char *identificator);
 char *conc_check_list(list_t **head, char *aux1);
 void free_list(list_t *head);
-int _strcmp(char *str1, char *str2);
+int _strcmp(char *s1, char *s2);
 char *get_path(void);
 int env_function();
 /*int change_path(char *argv[]);*/
@@ -42,6 +42,11 @@ char *builtin_compare(char *str);
 void builtin_execution(char *builtmatch, char *argv[]);
 void sigintHandler(int sig_num);
 int check_buffer(char *buffer);
+char *get_path(void);
+int _strncmp(char *s1, char *s2, size_t size);
+list_t *add_node_end(list_t **head, const char *str);
+void free_list(list_t *head);
+char *conc_check_list(list_t **head, char *aux1);
 
 extern char **environ;
 

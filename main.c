@@ -13,7 +13,7 @@ int main(void)
 	char *buffer = NULL;
 	/*list_t *header = NULL;*/
 	size_t buffsize = 1024;
-	unsigned int count_read = 0, i;
+	unsigned int count_read = 0;
 
 	signal(SIGINT, sigintHandler);
 	if (isatty(STDIN_FILENO) == 1) /*Interactive mode*/
@@ -34,15 +34,12 @@ int main(void)
 			if (check_buffer(buffer) == 0)
 			{
 				printf("Path valido\n");
-				identificator = " ";
-				array_words = buff_separator(buffer, identificator);
-				for (i = 0; array_words[i] != '\0'; i++)
-				{
-					printf("array_words [%i]: %s\n", i, array_words[i]);
-				}
-				function_execution(array_words);
-				free(array_words);
+				function_execution(buffer);
 			}
+			else
+			{
+			}
+			free(array_words);
 		}
 		free(buffer);
 		exit(EXIT_SUCCESS);
@@ -59,6 +56,7 @@ int main(void)
 			function_execution(array_read[count_read]);
 			count_read++;
 		}
+		free(array_read);
 		exit(0);
 	}
 	return (0);

@@ -6,7 +6,9 @@
  */
 void function_execution(char array_master[])
 {
-	char **array_words = NULL, *identificator, *built_compare;
+	char **array_words = NULL, *identificator = NULL, *built_compare = NULL;
+	char *_path = NULL, *token = NULL, *ptr_conc = NULL;
+	list_t *header = NULL;
 
 	identificator = " ";
 	array_words = buff_separator(array_master, identificator);
@@ -23,5 +25,16 @@ void function_execution(char array_master[])
 	else
 	{
 		printf("Vamos a concatenar PATH\n");
+		_path = get_path();
+		printf("_pah: %s\n", _path);
+		token = strtok(_path, ":");
+		while (token != NULL)
+		{
+			add_node_end(&header, token);
+			printf("token del path: %s\n", token);
+			token = strtok(NULL, ":");
+		}
+		ptr_conc = conc_check_list(&header, array_words[0]);
+		printf("Valor prot_conc: %s\n", ptr_conc);
 	}
 }

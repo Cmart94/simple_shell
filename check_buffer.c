@@ -8,18 +8,24 @@
  */
 int check_buffer(char *buffer)
 {
-	char *identificator = " ";
 	char *identificator1 = "\0";
 	char *identificador2 = "\n";
+	unsigned int i, count = 0;
+
+	for (i = 0; buffer[i] != '\0'; i++)
+	{
+		if (buffer[i] != ' ')
+			count++;
+	}
+	if (count == 0)
+	{
+		printf("Buffer lleno de espacios\n");
+		return (-1);
+	}
 
 	if (buffer == NULL)
 	{
 		printf("Buffer nulo\n");
-		return (-1);
-	}
-	else if(_strcmp(buffer, identificator) == 0)
-	{
-		printf("Buffer vacío\n");
 		return (-1);
 	}
 	else if (_strcmp(buffer, identificator1) == 0)

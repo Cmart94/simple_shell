@@ -18,21 +18,26 @@ void fork_execution(char **array_words)
 			if (execve(array_words[0], array_words, NULL) == -1)
 			{
 				perror("Error execve: ");
+				free(array_words);
 				exit(EXIT_FAILURE);
 			}
-			exit(EXIT_SUCCESS);
 		}
 		else if (fork_pid > 0)
+		{
 			wait(&status);
+			free(array_words);
+		}
 		else
 		{
 			perror("Error fork: ");
+			free(array_words);
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
 		perror("Error PATH: ");
-		exit(EXIT_FAILURE);
+		free(array_words);
+		/*exit(EXIT_SUCCESS);*/
 	}
 }
