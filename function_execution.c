@@ -4,10 +4,10 @@
  * @array_master: string to be evaluated
  * Return: On succes execution, otherwise print error
  */
-void function_execution(char array_master[])
+void function_execution(char array_master[], char *path)
 {
 	char **array_words = NULL, *identificator = NULL, *built_compare = NULL;
-	char *_path = NULL, *token = NULL, *ptr_conc = NULL;
+	char  *token = NULL, *ptr_conc = NULL, *_pathcpy = NULL;
 	list_t *header = NULL;
 
 	identificator = " ";
@@ -25,16 +25,23 @@ void function_execution(char array_master[])
 	else
 	{
 		printf("Vamos a concatenar PATH\n");
-		_path = get_path();
-		printf("_pah: %s\n", _path);
-		token = strtok(_path, ":");
+		_pathcpy = _strcpy(path);
+		printf("_pah: %s\n", _pathcpy);
+		token = strtok(_pathcpy, ":");
 		while (token != NULL)
 		{
 			add_node_end(&header, token);
 			printf("token del path: %s\n", token);
 			token = strtok(NULL, ":");
 		}
+		free(_pathcpy);
 		ptr_conc = conc_check_list(&header, array_words[0]);
-		printf("Valor prot_conc: %s\n", ptr_conc);
+		printf("Valor ptr_conc: %s\n", ptr_conc);
+		if (ptr_conc != NULL)
+		{
+			array_words[0] = ptr_conc;
+			fork_execution(array_words);
+		}
+		free_list(header);
 	}
 }

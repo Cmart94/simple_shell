@@ -10,12 +10,13 @@ int main(void)
 {
 	ssize_t characters_read, characters;
 	char buff_read[1024], **array_read = NULL, *identificator = NULL, **array_words = NULL;
-	char *buffer = NULL;
+	char *buffer = NULL, *_path = NULL;
 	/*list_t *header = NULL;*/
 	size_t buffsize = 1024;
 	unsigned int count_read = 0;
 
 	signal(SIGINT, sigintHandler);
+	_path = get_path();
 	if (isatty(STDIN_FILENO) == 1) /*Interactive mode*/
 	{
 		buffer = malloc(buffsize * sizeof(char));
@@ -34,7 +35,7 @@ int main(void)
 			if (check_buffer(buffer) == 0)
 			{
 				printf("Path valido\n");
-				function_execution(buffer);
+				function_execution(buffer, _path);
 			}
 			else
 			{
@@ -53,7 +54,7 @@ int main(void)
 		array_read = buff_separator(buff_read, identificator);
 		while (array_read[count_read] != NULL)
 		{
-			function_execution(array_read[count_read]);
+			function_execution(array_read[count_read], _path);
 			count_read++;
 		}
 		free(array_read);

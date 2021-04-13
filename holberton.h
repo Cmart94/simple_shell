@@ -35,7 +35,7 @@ int env_function();
 int isatty(int fd);
 /*int _exit();*/
 int count_commands(char *str_read);
-void function_execution(char array_master[]);
+void function_execution(char array_master[], char *path);
 int check_path(char *array);
 void fork_execution(char **array_words);
 char *builtin_compare(char *str);
@@ -47,6 +47,7 @@ int _strncmp(char *s1, char *s2, size_t size);
 list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
 char *conc_check_list(list_t **head, char *aux1);
+char *_strcpy(char *src);
 
 extern char **environ;
 
