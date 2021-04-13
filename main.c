@@ -6,59 +6,70 @@
  * Return: direction of head
  */
 
+void interactive_mode(char *path);
+void no_interactive_mode(char *path);
+
 int main(void)
 {
-	ssize_t characters_read, characters;
-	char buff_read[1024], **array_read = NULL, *identificator = NULL, **array_words = NULL;
-	char *buffer = NULL, *_path = NULL;
-	/*list_t *header = NULL;*/
-	size_t buffsize = 1024;
-	unsigned int count_read = 0;
+	char *path = NULL;
 
-	signal(SIGINT, sigintHandler);
-	_path = get_path();
+	signal(SIGINT, sigintHandler); /*Ctr + c exit handler*/
+	path = get_path(); /*Create variable with the path*/
 	if (isatty(STDIN_FILENO) == 1) /*Interactive mode*/
 	{
-		buffer = malloc(buffsize * sizeof(char));
-		if (buffer == NULL)
-		{
-			perror("ERROR: unable to alocate buffer");
-			exit(EXIT_FAILURE);
-		}
-		while (characters != EOF)
-		{
-			write(STDOUT_FILENO, "#cisfun$ ", 9);
-			characters = getline(&buffer, &buffsize, stdin); /*Liberar en caso de que falle*/
-			printf("%lu characters antes de corregir, buffer[%s]\n", characters, buffer);
-			buffer[characters - 1] = '\0';
-			printf("%lu characters leídos, buffer[%s]\n", characters, buffer);
-			if (check_buffer(buffer) == 0)
-			{
-				printf("Path valido\n");
-				function_execution(buffer, _path);
-			}
-			else
-			{
-			}
-			free(array_words);
-		}
-		free(buffer);
-		exit(EXIT_SUCCESS);
+		interactive_mode(path);
 	}
 	else /*No interactive mode*/
 	{
-		characters_read = read(STDIN_FILENO, buff_read, 1024);
-		identificator = "\n";
-		buff_read[characters_read] = '\0';
-		printf("Hay mas de un comando\n");/*print read*/
-		array_read = buff_separator(buff_read, identificator);
-		while (array_read[count_read] != NULL)
-		{
-			function_execution(array_read[count_read], _path);
-			count_read++;
-		}
-		free(array_read);
-		exit(0);
+		no_interactive_mode(path);
 	}
 	return (0);
+}
+
+void interactive_mode(char *path)
+{
+	ssize_t characters;
+	char **array_words = NULL, *buffer = NULL;
+	size_t buffsize = 1024;
+	
+	buffer = malloc(buffsize * sizeof(char));
+	if (buffer == NULL)
+	{
+		perror("ERROR: unable to alocate buffer");
+		exit(EXIT_FAILURE);
+	}
+	while (characters != EOF)
+	{
+		write(STDOUT_FILENO, "#cisfun$ ", 9);
+		if ((characters = getline(&buffer, &buffsize, stdin)) != -1)
+		{
+			buffer[characters - 1] = '\0';
+			if (check_buffer(buffer) == 0) /*Check is buffer is empty or not*/
+			{
+				function_execution(buffer, path); /*separate the buffer, evaluate if it's a path or not and execute*/
+			}
+			free(array_words);
+		}
+	}
+	free(buffer);
+	exit(EXIT_SUCCESS);
+}
+
+void no_interactive_mode(char *path)
+{
+	ssize_t characters_read;
+	char buff_read[1024], **array_read = NULL, *identificator = NULL;
+	unsigned int count_read = 0;
+	
+	characters_read = read(STDIN_FILENO, buff_read, 1024);
+	identificator = "\n";
+	buff_read[characters_read] = '\0';
+	array_read = buff_separator(buff_read, identificator); /*Separate lines of input and store it in array of pointers*/
+	while (array_read[count_read] != NULL)
+	{
+		function_execution(array_read[count_read], path); /*separate the buffer, evaluate if it's a path or not and execute*/
+		count_read++;
+	}
+	free(array_read);
+	exit(0);
 }
