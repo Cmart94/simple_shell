@@ -6,8 +6,6 @@
  * Return: direction of head
  */
 
-void interactive_mode(char *path);
-void no_interactive_mode(char *path);
 
 int main(void)
 {
@@ -26,12 +24,17 @@ int main(void)
 	return (0);
 }
 
+/**
+ * interactive_mode - Function that execute the interactive mode.
+ * @path: environmetal variable with the PATH
+ * Return: void function
+ */
 void interactive_mode(char *path)
 {
 	ssize_t characters;
 	char **array_words = NULL, *buffer = NULL;
 	size_t buffsize = 1024;
-	
+
 	buffer = malloc(buffsize * sizeof(char));
 	if (buffer == NULL)
 	{
@@ -41,12 +44,14 @@ void interactive_mode(char *path)
 	while (characters != EOF)
 	{
 		write(STDOUT_FILENO, "#cisfun$ ", 9);
-		if ((characters = getline(&buffer, &buffsize, stdin)) != -1)
+		while ((characters = getline(&buffer, &buffsize, stdin)) != -1)
 		{
 			buffer[characters - 1] = '\0';
-			if (check_buffer(buffer) == 0) /*Check is buffer is empty or not*/
+			/*Check is buffer is empty or not*/
+			if (check_buffer(buffer) == 0)
 			{
-				function_execution(buffer, path); /*separate the buffer, evaluate if it's a path or not and execute*/
+				/*separate the buffer, evaluate if it's a path or not and execute*/
+				function_execution(buffer, path);
 			}
 			free(array_words);
 		}
@@ -55,19 +60,27 @@ void interactive_mode(char *path)
 	exit(EXIT_SUCCESS);
 }
 
+/**
+ * no_interactive_mode - function that execute the no interactive mode.
+ * @path: environmetal variable with the PATH
+ * Return: void function
+ */
+
 void no_interactive_mode(char *path)
 {
 	ssize_t characters_read;
 	char buff_read[1024], **array_read = NULL, *identificator = NULL;
 	unsigned int count_read = 0;
-	
+
 	characters_read = read(STDIN_FILENO, buff_read, 1024);
 	identificator = "\n";
 	buff_read[characters_read] = '\0';
-	array_read = buff_separator(buff_read, identificator); /*Separate lines of input and store it in array of pointers*/
+	/*Separate lines of input and store it in array of pointers*/
+	array_read = buff_separator(buff_read, identificator);
 	while (array_read[count_read] != NULL)
 	{
-		function_execution(array_read[count_read], path); /*separate the buffer, evaluate if it's a path or not and execute*/
+		/*separate the buffer, evaluate if it's a path or not and execute*/
+		function_execution(array_read[count_read], path);
 		count_read++;
 	}
 	free(array_read);

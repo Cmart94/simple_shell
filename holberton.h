@@ -46,6 +46,8 @@ list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
 char *conc_check_list(list_t **head, char *aux1);
 char *_strcpy(char *src);
+void interactive_mode(char *path);
+void no_interactive_mode(char *path);
 
 extern char **environ;
 
