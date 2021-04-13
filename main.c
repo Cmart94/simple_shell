@@ -44,7 +44,7 @@ void interactive_mode(char *path)
 	while (characters != EOF)
 	{
 		write(STDOUT_FILENO, "#cisfun$ ", 9);
-		while ((characters = getline(&buffer, &buffsize, stdin)) != -1)
+		if ((characters = getline(&buffer, &buffsize, stdin)) != -1)
 		{
 			buffer[characters - 1] = '\0';
 			/*Check is buffer is empty or not*/
