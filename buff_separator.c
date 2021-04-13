@@ -24,7 +24,6 @@ char **buff_separator(char *str, char *identificator)
 	i = 0;
 	while (token != NULL)
 	{
-		printf("%s\n", token);
 		i++;
 		token = strtok(NULL, identificator);
 	}

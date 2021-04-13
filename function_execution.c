@@ -20,24 +20,19 @@ void function_execution(char array_master[], char *path)
 	}
 	else if (built_compare != NULL)
 	{
-		printf("built_compare: %s\n", built_compare);
 		builtin_execution(built_compare, array_words);
 	}
 	else
 	{
-		printf("Vamos a concatenar PATH\n");
 		_pathcpy = _strcpy(path);
-		printf("_pah: %s\n", _pathcpy);
 		token = strtok(_pathcpy, ":");
 		while (token != NULL)
 		{
 			add_node_end(&header, token);
-			printf("token del path: %s\n", token);
 			token = strtok(NULL, ":");
 		}
 		free(_pathcpy);
 		ptr_conc = conc_check_list(&header, array_words[0]);
-		printf("Valor ptr_conc: %s\n", ptr_conc);
 		if (ptr_conc != NULL)
 		{
 			array_words[0] = ptr_conc;

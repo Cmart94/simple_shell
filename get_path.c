@@ -13,7 +13,6 @@ char *get_path(void)
 	unsigned int i = 0;
 	char *aux = NULL, *_path = "PATH=";
 
-	printf("Entré!\n");
 	while (environ[i] != NULL)
 	{
 		if (!_strncmp(environ[i], _path, 5))
@@ -22,6 +21,5 @@ char *get_path(void)
 		}
 		i++;
 	}
-	printf("salí!\n");
 	return (aux);
 }

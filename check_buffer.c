@@ -19,28 +19,23 @@ int check_buffer(char *buffer)
 	}
 	if (count == 0)
 	{
-		printf("Buffer lleno de espacios\n");
 		return (-1);
 	}
 
 	if (buffer == NULL)
 	{
-		printf("Buffer nulo\n");
 		return (-1);
 	}
 	else if (_strcmp(buffer, identificator1) == 0)
 	{
-		printf("Buffer nulo\n");
 		return (-1);
 	}
 	else if (_strcmp(buffer, identificador2) == 0)
 	{
-		printf("Presiono enter\n");
 		return (-1);
 	}
 	else
 	{
-		printf("Buffer valido\n");
 		return (0);
 	}
 }

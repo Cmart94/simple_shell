@@ -7,16 +7,13 @@
  * Return: execition of built in function
  */
 
-void builtin_execution(char *builtmatch, char *argv[])
+void builtin_execution(char *builtmatch, char *argv[] __attribute__((unused)))
 {
 	unsigned int i = 0, j;
 	char *_env = "env", *_cd = "cd", *_exit = "exit";
 
-	printf("bliotmatch inside built execution: %s\n", builtmatch);
-	printf("argv inside built execution: %s\n", argv[0]);
 	if (_strcmp(builtmatch, _env) == 0)
 	{
-		printf("Voy a imprimir path global\n");
 		while (environ[i] != NULL)
 		{
 			for (j = 0; environ[i][j] != '\0'; j++)
@@ -35,5 +32,4 @@ void builtin_execution(char *builtmatch, char *argv[])
 		printf("Voy a salirme\n");
 		exit(EXIT_SUCCESS);
 	}
-	/*return (1);*/
 }

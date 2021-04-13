@@ -37,16 +37,13 @@ char *conc_check_list(list_t **head, char *aux1)
 		j = 0;
 		if (stat(ptr_conc, &fileStat) < 0)
 		{
-			printf("%s NOT FOUND\n", ptr_conc);
 			tmp = tmp->next;
 		}
 		else
 		{
-			printf("%s FOUND\n", ptr_conc);
 			return (ptr_conc);
 		}
 	}
-	printf("aux no se encuentra en el Path");
 	ptr_conc = NULL;
 	return (ptr_conc);
 }
