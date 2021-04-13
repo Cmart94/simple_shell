@@ -17,7 +17,7 @@ void fork_execution(char **array_words)
 		{
 			if (execve(array_words[0], array_words, NULL) == -1)
 			{
-				perror("Error execve: ");
+				perror("Execve error");
 				free(array_words);
 				exit(EXIT_FAILURE);
 			}
@@ -29,14 +29,14 @@ void fork_execution(char **array_words)
 		}
 		else
 		{
-			perror("Error fork: ");
+			perror("Fork error");
 			free(array_words);
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
-		perror("Error PATH: ");
+		perror(array_words[0]);
 		free(array_words);
 		/*exit(EXIT_SUCCESS);*/
 	}

@@ -44,6 +44,9 @@ char *conc_check_list(list_t **head, char *aux1)
 			return (ptr_conc);
 		}
 	}
+	/*write(STDIN_FILENO, ptr_conc, _strlen(ptr_conc));
+	  write(STDIN_FILENO, ": ", 2);*/
+	perror(aux1);
 	ptr_conc = NULL;
 	return (ptr_conc);
 }
