@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
  * fork_execution - Execution in different process
- * @array_master: string to be evaluated
+ * @array_words: string to be evaluated
  * Return: On succes execution, otherwise print error
  */
 void fork_execution(char **array_words)
@@ -9,7 +9,7 @@ void fork_execution(char **array_words)
 	int status;
 	pid_t fork_pid;
 	struct stat st;
-	
+
 	if (stat(array_words[0], &st) == 0)
 	{
 		fork_pid = fork();

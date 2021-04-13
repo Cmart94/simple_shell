@@ -17,7 +17,7 @@ void builtin_execution(char *builtmatch, char *argv[])
 	if (_strcmp(builtmatch, _env) == 0)
 	{
 		printf("Voy a imprimir path global\n");
-		while(environ[i] != NULL)
+		while (environ[i] != NULL)
 		{
 			for (j = 0; environ[i][j] != '\0'; j++)
 				;

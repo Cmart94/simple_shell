@@ -11,7 +11,7 @@ int _strncmp(char *s1, char *s2, size_t size)
 {
 	unsigned int i, count = 0;
 
-	for(i = 0; i < size; i++)
+	for (i = 0; i < size; i++)
 	{
 		if (s1[i] != s2[i])
 		{
@@ -19,7 +19,7 @@ int _strncmp(char *s1, char *s2, size_t size)
 		}
 	}
 	if (count != 0)
-		return(-1);
+		return (-1);
 	else
-		return(0);
+		return (0);
 }

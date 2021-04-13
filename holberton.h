@@ -30,10 +30,8 @@ char *conc_check_list(list_t **head, char *aux1);
 void free_list(list_t *head);
 int _strcmp(char *s1, char *s2);
 char *get_path(void);
-int env_function();
-/*int change_path(char *argv[]);*/
+int env_function(void);
 int isatty(int fd);
-/*int _exit();*/
 int count_commands(char *str_read);
 void function_execution(char array_master[], char *path);
 int check_path(char *array);

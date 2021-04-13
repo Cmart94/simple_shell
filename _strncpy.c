@@ -2,7 +2,6 @@
 
 /**
  * _strcpy - function that concatenates two strings
- * @dest: destiny array of chars
  * @src: string source
  * Description: none
  * Return: dest

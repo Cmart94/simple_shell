@@ -2,6 +2,7 @@
 /**
  * function_execution - Execution of the process
  * @array_master: string to be evaluated
+ * @path: string with the system path
  * Return: On succes execution, otherwise print error
  */
 void function_execution(char array_master[], char *path)
