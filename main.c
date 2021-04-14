@@ -75,7 +75,7 @@ void no_interactive_mode(char *path, char *argv)
 {
 	ssize_t characters_read;
 	char buff_read[1024], **array_read = NULL, *identificator = NULL;
-	unsigned int count_read = 0, counter = 0;
+	unsigned int count_read = 0;
 
 	characters_read = read(STDIN_FILENO, buff_read, 1024);
 	identificator = "\n";
@@ -84,9 +84,8 @@ void no_interactive_mode(char *path, char *argv)
 	array_read = buff_separator(buff_read, identificator);
 	while (array_read[count_read] != NULL)
 	{
-		counter++;
 		/*separate the buffer, evaluate if it's a path or not and execute*/
-		function_execution(array_read[count_read], path, array_read, argv, counter);
+		function_execution(array_read[count_read], path, array_read, argv, count_read);
 		count_read++;
 	}
 	free(array_read);

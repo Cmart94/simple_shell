@@ -11,7 +11,7 @@ void function_execution(char array_master[], char *path, char **array_read, char
 	char **array_words = NULL, *identificator = " ", *built_compare = NULL;
 	char  *token = NULL, *ptr_conc = NULL, *_pathcpy = _strcpy(path);
 	list_t *header = NULL;
-	
+
 	array_words = buff_separator(array_master, identificator);
 	built_compare = builtin_compare(array_words[0]);
 	if (check_path(array_words[0]) == 0)
@@ -40,14 +40,23 @@ void function_execution(char array_master[], char *path, char **array_read, char
 		}
 		else
 		{
-			print_error(argv, counter, array_master);
 			free(array_words);
-			free(array_master);
-			printf("array_read[%d]: %s\n", counter, array_read[counter]);
-			if (array_read[counter + 1] == NULL)
+			if (isatty(STDIN_FILENO) == 1)
 			{
-				free(array_read);
-				exit(127);
+				print_error(argv, counter, array_master);
+				printf("Liberando buffer...");
+				free(array_master);
+			}
+			else
+			{
+				counter++;
+				print_error(argv, counter, array_master);
+				counter--;
+				if (array_read[counter] == NULL)
+				{
+					free(array_read);
+					exit(127);
+				}
 			}
 		}
 	}
