@@ -56,6 +56,7 @@ void interactive_mode(char *path)
 			}
 		}
 	}
+	free(buffer);
 	exit(EXIT_SUCCESS);
 }
 

@@ -6,7 +6,6 @@
  * Return: pointer to the PATH
  */
 
-extern char **environ;
 
 char *get_path(void)
 {
