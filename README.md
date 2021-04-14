@@ -12,18 +12,18 @@ This is a simple shell implementation to make working with shell-like commands. 
 This shell was built and tested in Ubuntu 14.04 LTS in a virtual machine and compiled with GCC 4.8.4
 
 ## Respository Contents
-Simple Shell files:
+Files for compile the simple shell.
 
 | **File** | **Description** |
 |----------|-----------------|
 | holberton.h | Header file that contains all the functions and standard C library header file |
-| prompt.c | Contains the int main(void) function, entry point and **INThandler** |
-| strtok_example.c | Contains function that store commands in double pointer: **find_command_length**, **array_from_strtok functions** |
-| helper_function.c | Contains all helper functions: **_strncpy**,**_strncpyconst**, **_strlen_const**, **_strcmp**,**_strlen** |
-| environment.c | Contains all functions that handle environment/path: **find_semis**, **store_env_variables**, **_getenv**, **_strncpycmd**, **print_env** |
-| free_it_all.c | Contains function that frees memory: **free_it_all** |
-| error_messages.c | Contains functions that handle error messages: **build_error_message**, **_puterror**, **end_of_file**, **fork_fail**|
-| child_processes.c | Contains functions that handle all child proccess functionality: **command_is_null**, **exit_out**, **env_out**, **parent_free_buff_commands**, **c_path**|
+| main.c | Contains the entry entry point: **main**, **interactive_mode**, **no_interactive_mode** and **sigintHandle** functions |
+| Process_execution.c | Contains function that validate and execute process: **fork_execution**, **function_execution** |
+| Auxiliar_function.c | Contains all helper functions: **_strcmp**,**_strlen**, **_strncmp**, **_strcpy** |
+| Linked_list_handler.c | Contains all functions that handle linked list: **add_node_end**, **conc_check_list**, **free_list** |
+| Command_handler.c | Contains function that handle the propmt input: **buff_separator**, **count_commands** |
+| Builtins.c | Contains functions that handle builtins commands: **builtin_compare**, **builtin_execution**, **check_buffer** |
+| Path_handler.c | Contains functions that handle the PATH: **check_path**, **get_path** |
 
 Markdown is a lightweight markup language based on the formatting conventions
 that people naturally use in email.
