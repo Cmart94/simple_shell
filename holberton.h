@@ -33,7 +33,7 @@ char *get_path(void);
 int env_function(void);
 int isatty(int fd);
 int count_commands(char *str_read);
-void function_execution(char array_master[], char *path, char **array_read);
+void function_execution(char array_master[], char *path, char **array_read, char *argv, int counter);
 int check_path(char *array);
 void fork_execution(char **array_words);
 char *builtin_compare(char *str);
@@ -46,10 +46,12 @@ list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
 char *conc_check_list(list_t **head, char *aux1);
 char *_strcpy(char *src);
-void interactive_mode(char *path);
-void no_interactive_mode(char *path);
+void interactive_mode(char *path, char *argv);
+void no_interactive_mode(char *path, char *argv);
 void free_double_ptr(char **array_master);
 int _strlen(char *s1);
+void print_error(char *argv, int error_count, char *array_master);
+char *_itoa(int num);
 
 extern char **environ;
 
