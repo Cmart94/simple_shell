@@ -18,26 +18,19 @@ void fork_execution(char **array_words)
 			if (execve(array_words[0], array_words, NULL) == -1)
 			{
 				perror("Execve error");
-				free(array_words);
+				/*free_double_ptr(array_words);*/
 				exit(EXIT_FAILURE);
 			}
 		}
-		else if (fork_pid > 0)
+		if (fork_pid != 0)
 		{
 			wait(&status);
 			free(array_words);
-		}
-		else
-		{
-			perror("Fork error");
-			free(array_words);
-			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
 		perror(array_words[0]);
 		free(array_words);
-		/*exit(EXIT_SUCCESS);*/
 	}
 }

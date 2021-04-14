@@ -33,7 +33,7 @@ char *get_path(void);
 int env_function(void);
 int isatty(int fd);
 int count_commands(char *str_read);
-void function_execution(char array_master[], char *path);
+void function_execution(char array_master[], char *path, char **array_read);
 int check_path(char *array);
 void fork_execution(char **array_words);
 char *builtin_compare(char *str);
@@ -48,6 +48,8 @@ char *conc_check_list(list_t **head, char *aux1);
 char *_strcpy(char *src);
 void interactive_mode(char *path);
 void no_interactive_mode(char *path);
+void free_double_ptr(char **array_master);
+int _strlen(char *s1);
 
 extern char **environ;
 

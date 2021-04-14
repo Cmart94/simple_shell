@@ -32,7 +32,7 @@ int main(void)
 void interactive_mode(char *path)
 {
 	ssize_t characters;
-	char **array_words = NULL, *buffer = NULL;
+	char *buffer = NULL, **array_null = NULL;
 	size_t buffsize = 1024;
 
 	buffer = malloc(buffsize * sizeof(char));
@@ -44,19 +44,18 @@ void interactive_mode(char *path)
 	while (characters != EOF)
 	{
 		write(STDOUT_FILENO, "#cisfun$ ", 9);
-		if ((characters = getline(&buffer, &buffsize, stdin)) != -1)
+		characters = getline(&buffer, &buffsize, stdin);
+		if (characters != -1)
 		{
 			buffer[characters - 1] = '\0';
 			/*Check is buffer is empty or not*/
 			if (check_buffer(buffer) == 0)
 			{
 				/*separate the buffer, evaluate if it's a path or not and execute*/
-				function_execution(buffer, path);
+				function_execution(buffer, path, array_null);
 			}
-			free(array_words);
 		}
 	}
-	free(buffer);
 	exit(EXIT_SUCCESS);
 }
 
@@ -80,9 +79,9 @@ void no_interactive_mode(char *path)
 	while (array_read[count_read] != NULL)
 	{
 		/*separate the buffer, evaluate if it's a path or not and execute*/
-		function_execution(array_read[count_read], path);
+		function_execution(array_read[count_read], path, array_read);
 		count_read++;
 	}
 	free(array_read);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }

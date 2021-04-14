@@ -18,8 +18,8 @@ char *conc_check_list(list_t **head, char *aux1)
 
 	while (tmp != NULL)
 	{
-		len1 = strlen(tmp->str);
-		len2 = strlen(aux1);
+		len1 = _strlen(tmp->str);
+		len2 = _strlen(aux1);
 
 		ptr_conc = malloc((len1 + len2 + 2) * sizeof(char));
 		for (i = 0; i < (len1); i++)
@@ -38,15 +38,13 @@ char *conc_check_list(list_t **head, char *aux1)
 		if (stat(ptr_conc, &fileStat) < 0)
 		{
 			tmp = tmp->next;
+			free(ptr_conc);
 		}
 		else
 		{
 			return (ptr_conc);
 		}
 	}
-	/*write(STDIN_FILENO, ptr_conc, _strlen(ptr_conc));
-	  write(STDIN_FILENO, ": ", 2);*/
-	perror(aux1);
 	ptr_conc = NULL;
 	return (ptr_conc);
 }

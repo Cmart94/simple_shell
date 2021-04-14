@@ -5,7 +5,7 @@
  * @path: string with the system path
  * Return: On succes execution, otherwise print error
  */
-void function_execution(char array_master[], char *path)
+void function_execution(char array_master[], char *path, char **array_read)
 {
 	char **array_words = NULL, *identificator = NULL, *built_compare = NULL;
 	char  *token = NULL, *ptr_conc = NULL, *_pathcpy = NULL;
@@ -21,6 +21,7 @@ void function_execution(char array_master[], char *path)
 	else if (built_compare != NULL)
 	{
 		builtin_execution(built_compare, array_words);
+		free_double_ptr(array_words);
 	}
 	else
 	{
@@ -33,11 +34,20 @@ void function_execution(char array_master[], char *path)
 		}
 		free(_pathcpy);
 		ptr_conc = conc_check_list(&header, array_words[0]);
+		free_list(header);
 		if (ptr_conc != NULL)
 		{
 			array_words[0] = ptr_conc;
 			fork_execution(array_words);
+			free(ptr_conc);
 		}
-		free_list(header);
+		else
+		{
+			write(STDOUT_FILENO, "ERROR\n", 6);
+			free(array_words);
+			if (array_read != NULL)
+				free(array_read);
+			exit(127);
+		}
 	}
 }
