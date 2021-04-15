@@ -42,26 +42,34 @@ mode.  The user may quit the program by typing "exit", "Ctrl + D", or "Ctrl + C"
 When the program quits or a command has been executed, 
 .B simple shell 
 returns with a new prompt: "#cisfun$ ".              
+.SH EXAMPLES
+For interactive mode:
+.TP
+	vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$ ./hsh
+.TP
+	#cisfun$ pwd
+.TP
+	/home/vagrant/simple_shell
+.TP
+	#cisfun$ type commands here
+.TP
+For no interactive mode:
+.TP
+	vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$ echo "ps" | ./hsh
 
 .SH RESERVED WORDS
 .B exit: 
 quits the program, exits the shell.
-
+.TP
 .B env: 
 prints the environment variables
-
-.SH HISTORY
-The 
-.B history 
-built-in displays the history list, one command per line, preceded with line numbers, starting with 0. On exit the entire history is written to a file named
-.I simple_shell_history
-in the 
+in 
 .I $HOME
 directory.
-.SH SHELL BUILTIN COMMANDS
+.SH BUILTIN COMMANDS
 The commands 
 .B exit
-and 
+and
 .B env
 are handled automatically by 
 .B simple shell
@@ -95,4 +103,4 @@ Report
 .B simple shell 
 bugs to https:https://github.com/Matteo-lu or https://github.com/Cmart94
 .SH AUTHOR
-Cristian Martinez, Mateo Londoño 14-04-2021
+Cristian Martinez, Mateo Londoño
