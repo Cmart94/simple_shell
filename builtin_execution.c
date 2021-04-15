@@ -34,7 +34,10 @@ void builtin_execution(char *builtmatch, char **argv,
 	{
 		free(argv);
 		free(array_read);
-		/*free(array_words);*/
+		if (isatty(STDIN_FILENO) == 1)
+		{
+			free(array_words);
+		}
 		exit(EXIT_SUCCESS);
 	}
 }
