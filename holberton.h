@@ -38,7 +38,7 @@ void function_execution(char array_master[], char *path, char **array_read,
 int check_path(char *array);
 void fork_execution(char **array_words);
 char *builtin_compare(char *str);
-void builtin_execution(char *builtmatch, char *argv[], char *array_read[],
+void builtin_execution(char *builtmatch, char **argv, char *array_read[],
 		       char array_words[]);
 void sigintHandler(int sig_num);
 int check_buffer(char *buffer);

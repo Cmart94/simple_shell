@@ -30,7 +30,16 @@ void fork_execution(char **array_words)
 	}
 	else
 	{
-		perror(array_words[0]);
-		free(array_words);
+		if (isatty(STDIN_FILENO) == 1)
+		{
+			perror(array_words[0]);
+			free(array_words);
+		}
+		else
+		{
+			perror(array_words[0]);
+			free(array_words);
+			exit(127);
+		}
 	}
 }

@@ -9,8 +9,8 @@
  * Return: execition of built in function
  */
 
-void builtin_execution(char *builtmatch, char *argv[] __attribute__((unused)),
-		       char *array_read[], char array_words[])
+void builtin_execution(char *builtmatch, char **argv,
+		       char *array_read[], char array_words[] __attribute__((unused)))
 {
 	unsigned int i = 0, j;
 	char *_env = "env", *_cd = "cd", *_exit = "exit";
@@ -34,7 +34,7 @@ void builtin_execution(char *builtmatch, char *argv[] __attribute__((unused)),
 	{
 		free(argv);
 		free(array_read);
-		free(array_words);
+		/*free(array_words);*/
 		exit(EXIT_SUCCESS);
 	}
 }
