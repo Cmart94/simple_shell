@@ -85,7 +85,8 @@ void no_interactive_mode(char *path, char *argv)
 	while (array_read[count_read] != NULL)
 	{
 		/*separate the buffer, evaluate if it's a path or not and execute*/
-		function_execution(array_read[count_read], path, array_read, argv, count_read);
+		function_execution(array_read[count_read], path,
+				   array_read, argv, count_read);
 		count_read++;
 	}
 	free(array_read);

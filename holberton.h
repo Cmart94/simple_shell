@@ -37,7 +37,7 @@ void function_execution(char array_master[], char *path, char **array_read, char
 int check_path(char *array);
 void fork_execution(char **array_words);
 char *builtin_compare(char *str);
-void builtin_execution(char *builtmatch, char *argv[]);
+void builtin_execution(char *builtmatch, char *argv[], char *array_read[], char array_words[]);
 void sigintHandler(int sig_num);
 int check_buffer(char *buffer);
 char *get_path(void);
@@ -52,6 +52,9 @@ void free_double_ptr(char **array_master);
 int _strlen(char *s1);
 void print_error(char *argv, int error_count, char *array_master);
 char *_itoa(int num);
+char *_strcpy_constant(const char *src);
+void error_handler(char *array_words[], char *argv, int counter,
+		   char *array_master, char *array_read[]);
 
 extern char **environ;
 
