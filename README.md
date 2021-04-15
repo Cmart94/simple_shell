@@ -6,8 +6,7 @@ This is a simple shell implementation to execute shell-like commands. You have t
 
 - Writing in C
 - For Ubuntu 14.04 LTS      
-- With memory Magic ✨✨✨
-✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+- With memory ✨Magic✨
 
 ## Environment
 This shell was built and tested in Ubuntu 14.04 LTS in a virtual machine and compiled with GCC 4.8.4

@@ -1,1 +1,98 @@
-Manual en desarrollo...
+.TH hsh 1 "14 April 2021" "0.32" "Holberton Commands Manual"
+.SH NAME
+.B hsh 
+- Simple Shell program
+.SH SYNOPSIS
+.B ./hsh 
+[command] [options]
+.SH COPYRIGHT
+.B hsh 
+is Copyright (C) Cristian Martinez and Mateo Londoño licensed under the MIT license.
+.SH DESCRIPTION
+The 
+.B hsh 
+program is a command language interpreter that shall execute commands read from a command line string, the standard input, or a specified file.
+The simple shell is a simplified iteration of a command line interpreter, similar to 
+.B bash or 
+.B dash. 
+.I FORMAT [ARGUMENT]...
+
+.SH OPTIONS
+.B Simple Shell
+operates in both 
+.I interactive 
+and 
+.I non-interactive
+ mode. The user may initiate 
+.B simple shell
+and begin working or initate 
+.B simple shell
+using commands meant to be run by the program.
+.SH ARGUMENTS
+The first argument, argument 0 is understood to be the command to be run by 
+.B simple shell
+and arguments following as modifiers or options.
+.SH INVOCATION
+.B simple shell
+may be invoked with the same functionality in 
+.I interactive 
+or 
+.I non-interactive 
+mode.  The user may quit the program by typing "exit", "Ctrl + D", or "Ctrl + C" on the command line.
+When the program quits or a command has been executed, 
+.B simple shell 
+returns with a new prompt: "#cisfun$ ".              
+
+.SH RESERVED WORDS
+.B exit: 
+quits the program, exits the shell.
+
+.B env: 
+prints the environment variables
+
+.SH HISTORY
+The 
+.B history 
+built-in displays the history list, one command per line, preceded with line numbers, starting with 0. On exit the entire history is written to a file named
+.I simple_shell_history
+in the 
+.I $HOME
+directory.
+.SH SHELL BUILTIN COMMANDS
+The commands 
+.B exit
+and 
+.B env
+are handled automatically by 
+.B simple shell
+
+.SH EXIT STATUS
+The following exit values shall be returned:
+.Bl
+.It 
+.B 0
+he script to be executed consisted solely of zero more blank lines or comments, or both.
+.It
+.B 1-125
+A non-interactive shell detected an error other than command_file not found or executable, including but not limited to syntax, redirection, or variable assignment errors.
+.It
+.B 126
+A specified command_file could not be executed.
+.It
+.B 127
+A specified command_file could not be found by the shell.
+.El
+.Pp
+Otherwise, the shell shall return the exit status of the last command it invoked or attempted to invoke
+
+.SH SEE ALSO
+.I sh(1)
+,
+.I _printf(3)
+
+.SH BUGS
+Report 
+.B simple shell 
+bugs to https:https://github.com/Matteo-lu or https://github.com/Cmart94
+.SH AUTHOR
+Cristian Martinez, Mateo Londoño 14-04-2021
