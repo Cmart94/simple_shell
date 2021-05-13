@@ -2,7 +2,7 @@
 
 /**
  * buff_separator - separate the buffer string of getline
- * @str: Pointer to the bugger string
+ * @str: pointer to the bugger string
  * @identificator: identificator for strtok
  * Return: array of pointers with str separate
  */

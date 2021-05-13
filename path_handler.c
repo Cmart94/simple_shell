@@ -2,7 +2,7 @@
 
 /**
  * check_path - check if the string has a '/'
- * @array: Pointer to first element of the array_words
+ * @array: pointer to first element of the array_words
  *
  * Return: if the string has an '/' return 0.
  */
